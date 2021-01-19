@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name='viewport'
+        content="width=device-width initial-scale=1 shrink-to-fit=no">
+
+        <title>{{ user.username }}'s profile</title>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                document.querySelectorAll('.profileformbutton').forEach(function(button){
+                    var booleanDisplay = true;
+
+                    button.onclick =  function(){
+                        
+                        var formId = this.getAttribute('id');
+
+                        forms = document.querySelectorAll('.profileform');
+                        forms.forEach(form => {
+
+                            form.style.display = 'none';
+                            editform = form.getAttribute('data-edit');
+                            var formToEdit = formId === editform;
+                            
+                            if(formToEdit){
+                                if(booleanDisplay){
+                                    form.style.display = 'block';
+                                    booleanDisplay = !booleanDisplay;
+                                }
+                                else{
+                                    booleanDisplay = !booleanDisplay;
+                                }
+                            }
+                            
+                        })
+                        
+                    }
+                })
+
+
+            })
+
+        </script>
+
+        <style>
+            body{
+                background-color: rgb(235, 235, 235);
+                display: flex;
+                flex-wrap: wrap;
+                font-family: Arial, Helvetica, sans-serif;
+
+            }
+            input, textarea{
+                background-color: rgb(255, 255, 255);
+                color: black;
+                padding: 4px;
+                border: 1px solid rgb(164, 162, 162);
+                border-radius: 4px;
+
+            }
+            button{
+                background-color: rgb(113, 113, 237);
+                color: aliceblue;
+                padding: 4px;
+                border: 1px solid rgb(113, 113, 237);
+                border-radius: 4px;
+            }
+
+            .profileform{
+                display: none;
+            }
+            
+                .userprofile, .otherinfo{
+                    width: 25%;
+                    background-color: white;
+                    margin-left: 7px;
+                    border-radius: 10px;
+                    padding: 7px;
+                }
+                    .imageHouse{
+                        width: 100%;
+                        align-items: center;
+
+                    }
+                    .profileimage{
+                        width: 200px;
+                        height: 200px;
+                        border-radius: 50%;
+                        display: block;
+                        margin: auto;
+                    
+                    }
+                    .bioinfo{
+                        align-items: center;
+                        text-align: center;
+                    }
+                
+                .userPerformance{
+                    background-color: white;
+                    width: 40%;
+                    margin-left: 7px;
+                    border-radius: 10px;
+                    padding: 7px;
+                }
+            
+            @media (max-width: 800px){
+                .userprofile, .otherinfo{
+                    width: 95%;
+                    margin: auto;
+                    margin-bottom: 10px;
+                }
+                .userPerformance{
+                    background-color: white;
+                    margin: auto;
+                    width: 95%;
+                    margin-bottom: 10px;
+                }
+            }
+            @media (min-width: 800px){
+                .userprofile, .otherinfo{
+                    width: 25%;
+                }
+                .userPerformance{
+                    background-color: white;
+                    width: 40%;
+                }
+            }
+            
+        </style>
+    </head>
+
+    <body>
+
+        <div class='userprofile'>
+
+            <div class='imageHouse'>
+                {% if user.profile.profile_image %}
+                    <img class='profileimage' src='{{ user.profile.profile_image.url }}'
+                     alt='{{ user.profile.username}} profile picture' />
+                {% else %}
+                    <p>{{ user.profile.username}} profile picture</p>
+                {% endif %}
+
+                <button type='button' class='profileformbutton' id='editimage'>Edit Image</button>
+                <br/>
+                <form class='profileform' enctype="multipart/form-data" 
+                data-edit='editimage' action='{% url "courses:updateprofile" %}' method='POST'>
+                    {% csrf_token %}
+                    <input type='hidden' name='tochange' value='image'>
+                    {{ imageForm }}
+                    <button>Change Image</button>
+                    
+                </form>
+            </div>
+
+            <div class='bioinfo'>
+                <h2>
+                    {{ user.username | capfirst }}
+                </h2>
+                <h3>
+                    {{ user.profile.institution }}
+                    <button type='button' class='profileformbutton' id='editinstitution'>Edit Institution</button>
+                    <br/>
+                    <form class='profileform' 
+                    enctype="multipart/form-data" 
+                    data-edit='editinstitution' action='{% url "courses:updateprofile" %}' method='POST'>
+
+                        {% csrf_token %}
+                        <input type='hidden' name='tochange' value='institution'>
+                        <input type='input' name='changeinstitution'>
+                        <button>Change Institution</button>
+                    </form>
+
+                    
+                </h3>
+
+                <p>
+                    {{ user.profile.bio }}
+                    <button type='button' class='profileformbutton' id='editbio'>Edit Bio</button>
+                    <br/>
+                    <form class='profileform' 
+                    enctype="multipart/form-data" 
+                    data-edit='editbio' action='{% url "courses:updateprofile" %}' method='POST'>
+                        {% csrf_token %}
+                        <input type='hidden' name='tochange' value='bio'>
+                        <textarea name='changebio'></textarea>
+                        <button>Change Bio</button>
+                    </form>
+
+                </p>
+            </div>
+        </div>
+
+        <div class='userPerformance'>
+            <!-- Styles and Functions for this below-->
+            <div class='main_body'>
+                <div id='score_container'>
+        
+                    <div id='dateholder'></div>
+        
+                    <div id='score'></div>
+
+                    <div id='user_course'>
+                        <div id='user'>
+                            {% if user %}
+                                {{ user }}
+                            {% endif %}
+                        </div>
+        
+                        <div id='course'></div>
+                    </div>
+        
+                   <br>
+                </div>
+        
+                <div id='history'>
+                    <p style='text-align: center;'><strong>History</strong> </p>
+                    {% if user_performances %}
+        
+                    {% for performance in user_performances %}
+                        <div class='summary' data-score='{{ performance.score }}' data-course='{{ performance.course }}' data-date='{{ performance.date }}'>
+                            <p class='short'>{{ performance.course }}</p>
+                            <p class='short'>{{ performance.date }}</p>
+                        </div>
+                    {% endfor %}
+                    
+                    {% else %}
+                        <div class='summary'>
+                            <p><strong>No History yet</strong></p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+
+        <div class='otherinfo'>
+            Intentionally left blank
+        </div>
+
+    
+    
+    <style>
+         #score_container{
+            background-color: white;
+            border: 1px solid rgb(239, 236, 236);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        
+        #score{
+            width: 90%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-radius: 5px;
+            background-color: white;
+            text-align: center;
+            font-size: 2em;
+            margin: auto;
+            
+            
+        }
+        
+
+        #user_course{
+            width: 100%;
+            margin: auto;
+            display: flex;
+            color: rgb(255, 238, 238);
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+        #user, #course{
+            width: 40%;
+            text-align: center;
+            margin: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 8px;
+
+        }
+        #user{
+            background-color: rgb(0, 96, 0);
+        }
+        #course{
+            background-color: brown;
+        }
+
+        /*VERSION 2 ADDITIONS*/
+        .summary{
+            width: 95%;
+            border: 1px solid rgb(232, 230, 230);
+            border-radius: 10px;
+            margin: 5px;
+            cursor: pointer;
+            
+        }
+        .summary p{
+            text-align: center;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        //What we want to achieve with the javascript is, on click of a previous performance, it replaces the content of the displayed performance
+        //Query for all performances
+        History = document.querySelectorAll('.summary')
+        History.forEach(function(summary){
+
+            //On click of each performance(summary)
+            summary.onclick = function(){
+                //Change all other summaries background color to white
+                History.forEach(function(changeColor){
+                    changeColor.style.backgroundColor = 'white';
+                })
+                //While you keep the current summary's color at light blue for example
+                this.style.backgroundColor = 'rgb(221, 221, 250)';
+
+                // This section attempts to replace the displayed performance
+                    //Get the data you want to pass in
+                    displayScore = this.getAttribute('data-score')
+                    displayCourse = this.getAttribute('data-course')
+                    displayDate = this.getAttribute('data-date')
+
+                    //Replace the current displayed performance with the new data
+                    document.querySelector('#score').innerHTML = `<p>Your Score: ${displayScore}%</p>`
+                    document.querySelector('#user_course #course').innerHTML = `${displayCourse}`
+                    document.querySelector('#score_container #dateholder').innerHTML = `Date Taken: ${displayDate}`
+       
+
+
+                
+            }
+        })
+    })
+</script>
+
+    </body>
+</html>

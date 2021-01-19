@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- login -->
+<section class="signin">
+    <div class="container justify-content-center d-flex align-items-center">
+      <div class="form">
+        <div class="signin-heading text-center">
+          <h2>Register to Casots</h2>
+        </div>
+        <form method="post" action="." class="mt-5">
+          {% csrf_token %}
+          {{ form|crispy }}
+
+          <div class="button text-center mt-4">
+          <button type="submit" class="btn btn-primary col-md-12 login-submit">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</section>
+<!-- ending login -->
+
+
+{% endblock content %}

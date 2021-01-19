@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- contact us -->
+<section>
+        <div class="contact-us-hero d-flex justify-content-center align-items-center">
+            <h1>Contact Us</h1>
+        </div>
+</section>
+<!-- contact us ending-->
+
+<!-- contact-us form -->
+<section>
+    <div class="container">
+        <div class="contact-us mt-4">
+            <div class="contact-us-heading text-center">
+                <h3>Contact Us</h3>
+            </div>
+
+            <div class="contact-us-form mt-5">
+                <form class="row g-3" method="post">
+                  {% csrf_token %}
+                    <div class="col-md-6 ">
+                      <label for="FirstName" class="form-label">First Name</label>
+                      <input type="text" class="form-control" name="first_name">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="LastName" class="form-label">Last Name</label>
+                      <input type="text" class="form-control" name="last_name">
+                    </div>
+                    <div class="col-12 mt-3">
+                      <label for="inputEmail" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email_address">
+                    </div>
+                    <div class="col-12 mt-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="12" name="message"></textarea>                      
+                    </div>
+                    <div class="col-12 text-center">
+                      <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                  </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- contact-us form ending -->
+{% endblock content %}

@@ -1,0 +1,326 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+        <title>Quiz Performance</title>
+
+        <style>
+            *{
+                margin: 0px;
+            }
+            body{
+                font-family: Helvetica, sans-serif, Arial;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            #score_container{
+                background-color: white;
+                border: 1px solid rgb(239, 236, 236);
+                padding: 20px;
+                box-shadow: 2px 2px 2px 2px rgb(228, 226, 226);
+                display: flex;
+                flex-wrap: wrap;
+                width: 90%;
+                
+            }
+            #score{
+                width: 90%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-radius: 5px;
+                background-color: white;
+                text-align: center;
+                font-size: 2em;
+                margin: auto;
+                
+            }
+            
+
+            #user_course{
+                width: 100%;
+                margin: auto;
+                display: flex;
+                color: rgb(255, 238, 238);
+                flex-wrap: wrap;
+                justify-content: center;
+                
+            }
+            #user, #course{
+                width: 40%;
+                text-align: center;
+                margin: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border-radius: 8px;
+
+            }
+            #user{
+                background-color: rgb(0, 96, 0);
+            }
+            #course{
+                background-color: brown;
+            }
+
+            /*VERSION 2 ADDITIONS*/
+
+            .main_body{
+                width: 101%;
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            @media (min-width: 799px){
+                .main_body{
+                    width:60%;
+                    margin-left: 10px;
+                }
+            }
+
+        </style>
+
+        <!-- Styling for the quiz navigation-->
+        <link rel='stylesheet' href='{% static "quizTest/quiz_nav.css" %}'>
+
+        <!--JavaScript to make navigation more responsible-->
+        <script src='{% static "quizTest/quiz_nav.js" %}'></script>
+
+    </head>
+
+    <body>
+        
+         <!--Include the navigation points and their url references here-->
+         <nav id='nav'>
+            <p class='nav_home'>Dashboard  </p>
+            <div id='nav_house'>
+                
+                <div>
+                    <h4>Header 1</h4>
+                    <br>
+                    <p><a href='{% url "courses:home" %}'>Home</a></p>
+                </div> 
+            </div>
+        </nav>
+
+
+
+        <br>
+
+
+        <div class='main_body'>
+        <div id='score_container'>
+
+                <div id='dateholder'>
+                    {% if submission_date %}
+                        {{ submission_date }}
+                    {% endif %}
+                </div>
+
+                <div id='score'>
+                    {% if score %}
+                   <p>Your Score: {{ score }}%</p> 
+                        
+                    {% endif %}
+                </div>
+            
+
+            <div id='user_course'>
+                <div id='user'>
+                    {% if user %}
+                        {{ user }}
+                    {% endif %}
+                </div>
+
+                <div id='course'>
+                    {% if course %}
+                        {{ course }}
+                    {% endif %}
+                </div>
+        </div>
+        </div>
+
+        <div id='answer'>
+            {% if list_solution %}
+                {% for solution in list_solution %}
+                    <div class='solutionSet' 
+                    data-chosenAnswer='{{ solution.chosenAnswer }}'
+                    data-answer = '{{ solution.answer }}'>
+                    
+                        <section class='theQuestion'>Q.{{ solution.index | add:'1' }} <br/><br/> {{ solution.question }}</section>
+                        <div class='optionHouse'>
+                            <section class='options' data-id='A'><span class='optionSpan'>A</span> {{ solution.A }}</section>
+                            <section class='options' data-id='B'><span class='optionSpan'>B</span>  {{ solution.B }}</section>
+                            <section class='options' data-id='C'><span class='optionSpan'>C</span> {{ solution.C }}</section>
+                            <section class='options' data-id='D'><span class='optionSpan'>D</span>  {{ solution.D }}</section>
+                            <section class='showNoAnswer'> You didn't give an answer to this question</section>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <style>
+            #answer{
+                font-family:Arial, Helvetica, sans-serif;
+                background-color: rgb(248, 247, 247);
+                color: rgb(0, 7, 13);
+                margin-top: 10px;
+                padding: 12px;
+                border-radius: 11px;
+                border: 1px solid rgb(227, 224, 224);
+                
+            }
+
+            .solutionSet{
+                background-color: white;
+                margin-bottom: 15px;
+                border: 1px solid rgb(228, 228, 229);
+                border-radius: 7px;
+                padding: 8px;
+            }
+
+            .theQuestion{
+                text-align: center;
+                margin-bottom: 7px;
+                border: 1px solid rgb(241, 240, 240);
+                border-radius: 8px;
+            }
+
+            .optionHouse{
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .options{
+                width: 35%;
+                margin:  20px;
+                align-items: center;
+                justify-content: space-around;
+                border: 1px solid rgb(212, 211, 211);
+                border-radius: 10px;
+                padding: 6px;
+            }
+            .optionSpan{
+                padding-left: 5px;
+                padding-right: 5px;;
+
+                background-color: navy;
+                color: aliceblue;
+                border: 1px solid navy;
+                border-radius: 3px;
+            }
+
+            .isRight{
+                background-color: rgb(12, 83, 12);
+                color: rgb(234, 246, 234);
+            }
+            .isWrong{
+                background-color: rgb(130, 7, 7);
+                color: rgb(237, 217, 217);
+            }
+
+            .showNoAnswer{
+                display : none;
+                text-align: center;
+                width: 95%;
+            }
+
+            @media(max-width: 800px){
+                .options{
+                width: 40%;
+                margin:  10px;   
+                }
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () =>{
+                questions = document.querySelectorAll('.solutionSet')
+                questions.forEach(function(question){
+                    chosenAnswer = question.getAttribute('data-chosenAnswer')
+                    rightAnswer = question.getAttribute('data-answer')
+
+                    options = question.querySelectorAll('.options')
+                    var inChoices = false;
+
+                    possibleChoices = []
+                    for(var choice=0; choice < options.length;  choice++){
+                        choiceId = options[choice].getAttribute('data-id');
+                        possibleChoices.push(choiceId)
+                    }
+                    
+                    for(var choice=0; choice < possibleChoices.length; choice++){
+                        if(possibleChoices[choice] == chosenAnswer){
+                            var inChoices = true;
+                        }
+                        else{
+                            //pass
+                        }
+                    }
+                    
+
+                    if(rightAnswer === chosenAnswer){
+
+                        options.forEach(function(option){
+                            designation = option.getAttribute('data-id')
+                            if(rightAnswer == designation){
+                                option.classList.add('isRight');
+                                option.innerHTML += ' &#9745;'
+                                
+                            }
+
+                            question.querySelector('.showNoAnswer').innerHTML = 'Your answer is correct';
+                            question.querySelector('.showNoAnswer').style.display = 'block';
+
+
+                        })
+                    }
+
+                    
+
+                    else if(inChoices) {
+
+                        options.forEach(function(option){
+                            designation = option.getAttribute('data-id')
+                            if(rightAnswer == designation){
+                                option.innerHTML += ' &#9745;';
+                                option.classList.add('isRight');
+                            }
+                            if(chosenAnswer == designation){
+                                
+                                option.innerHTML += '   &#x2613;';
+                                option.classList.add('isWrong');
+
+                            }
+                            question.querySelector('.showNoAnswer').innerHTML = 'Your answer is incorrect';
+                            question.querySelector('.showNoAnswer').style.display = 'block';
+
+
+                        })
+                        
+                    }
+
+                    else{
+                        options.forEach(function(option){
+                            designation = option.getAttribute('data-id')
+                            if(rightAnswer == designation){
+                                option.innerHTML += ' &#9745;';
+                                option.classList.add('isRight');
+                            }
+                        })
+                        question.querySelector('.showNoAnswer').style.display = 'block';
+                    }
+                    
+                })
+            } )
+        </script>
+        
+
+           
+        
+
+        
+    </body>
+</html>

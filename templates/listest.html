@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello world</title>
+    </head>
+
+    <body>
+        <form method='POST'>
+            {% csrf_token %}
+            <input name='dictionary' value='[{"n": "sam", "a": "23"}, {"n":"Peter", "a": "24"}, {"n": "Tim", "a": "25"}]'/>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
