@@ -1,0 +1,16 @@
+.contact-us-hero{
+    height: 70vh;
+    background: linear-gradient(90deg, rgba(75, 54, 119, 0.804) 7%, rgba(137, 82, 182, 0.841) 50%, rgba(58, 56, 63, 0.746) 99%), url('../images/8cbf1fac-2228-4bed-8ee6-e7918a22eb0a.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.contact-us-hero h1{
+    color: #fff;
+}
+.g-3 input{
+    background-color: rgb(236, 236, 237);
+    border:none
+}
+.g-3 textarea{
+    background-color: rgb(236, 236, 237);
+}

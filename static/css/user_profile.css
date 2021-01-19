@@ -1,0 +1,131 @@
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(245, 245, 245);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 950px){
+ #root .Userprofile, .anyAddedStuff{
+         width: 23%;
+ }
+ #root .scoreDetailForProfile{
+         width: 40%;
+ }
+}
+
+@media (max-width: 949px){
+ #root .Userprofile, .anyAddedStuff{
+         width: 100%;
+ }
+ #root .scoreDetailForProfile{
+         width: 100%;
+ }  
+}
+
+
+     #root .Userprofile, .anyAddedStuff{
+         
+         margin: 20px;
+         border: 1px solid rgb(239, 239, 239);
+         border-radius: 10px;
+         background-color: white;
+         padding: 10px;
+         align-items: center;
+         max-height: 1000px;
+         
+         
+
+     }
+     .Userprofile #imgHouse{
+         width: 100%;
+         align-items: center;
+         
+         
+        
+     }
+     #userProfilepics{
+         width: 250px;
+         height: 250px;
+         border-radius: 50%;
+         display: block;
+         margin: auto;
+         
+
+     }
+
+     .profileChild{
+         text-align: center;
+     }
+
+     #root .scoreDetailForProfile{
+       
+         border: 1px solid rgb(239, 239, 239);
+         border-radius: 10px;
+
+     }
+
+     
+
+
+ 
+ #score_container{
+     background-color: white;
+     border: 1px solid rgb(239, 236, 236);
+     border-radius: 10px;
+ }
+
+ 
+ #score{
+     width: 90%;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     border-radius: 5px;
+     background-color: white;
+     text-align: center;
+     font-size: 2em;
+     margin: auto;
+     
+     
+ }
+ 
+
+ #user_course{
+     width: 100%;
+     margin: auto;
+     display: flex;
+     color: rgb(255, 238, 238);
+     flex-wrap: wrap;
+     justify-content: center;
+     
+ }
+ #user, #course{
+     width: 40%;
+     text-align: center;
+     margin: 10px;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     border-radius: 8px;
+
+ }
+ #user{
+     background-color: rgb(0, 96, 0);
+ }
+ #course{
+     background-color: brown;
+ }
+
+ /*VERSION 2 ADDITIONS*/
+ .summary{
+     width: 95%;
+     border: 1px solid rgb(232, 230, 230);
+     border-radius: 10px;
+     margin: 5px;
+     cursor: pointer;
+     
+ }
+ .summary p{
+     text-align: center;
+ }
+
+ 

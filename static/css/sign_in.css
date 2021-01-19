@@ -1,0 +1,40 @@
+/* global */
+:root{
+    --white:#fff;
+    --color1:#8070d0;
+    --color3:#7163b8;
+    --black:rgb(0, 0, 0);
+    --color2:rgb(95, 95, 95);
+}
+
+/* global ending */
+
+
+.signi{
+    height: 100vh;
+    margin-top: 3.5rem;
+    background:url('/asset/images/IMG-20201114-WA0026.jpg');
+    background: linear-gradient(90deg, rgba(75, 54, 119, 0.804) 7%, rgba(137, 82, 182, 0.841) 50%, rgba(58, 56, 63, 0.746) 99%), url('../images/IMG-20201114-WA0023.jpg') no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+background-color:var(--white);
+padding: 3rem;
+width: 30rem;
+}
+/* login */
+.register-account{
+    color: var(--color2);
+}
+.password{
+    color: var(--color2);
+}
+.login-submit{
+    background-color: var(--color3);
+    border:none;
+}
+/* login ending */
