@@ -1,0 +1,231 @@
+/* global */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: sans-serif;
+}
+
+
+
+:root{
+    --white:#fff;
+    --color1:#8070d0;
+    --color3:#7163b8;
+    --black:rgb(0, 0, 0);
+    --color2:rgb(95, 95, 95);
+}
+h1,h2,h3,h4,h5{
+    text-transform: capitalize;
+}
+.navbar-brand:hover{
+    color:#fff !important;
+
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+/* global ending */
+/* navbar */
+
+
+.navbar-brand{
+    color: #fff;
+}
+.unique1{
+    color:var(--color1) !important ;
+}
+.sticky{
+    padding: 5px 100px !important;
+    background:rgb(0, 0, 0) !important;
+    transition: .6s;
+}
+.nav-link{
+    color: var(--white);
+}
+.nav-link:hover{
+    color: var(--color1);
+}
+.down{
+    position: relative;
+    top: 2px;
+}
+/* navbar ending */
+
+
+/* hero section */
+.hero{
+    height: 100vh;
+    background:url('../images/Caleb_Woods_2017-06-03_\(Unsplash\).jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff !important;
+}
+.learn-more{
+    background-color: var(--color1);
+    padding: 9px;
+    color:var(--white);
+    border-radius: 4px;
+}
+.view-course{
+    background-color: var(--black);
+    padding: 9px;
+    color:var(--white);
+    border-radius: 4px;
+}
+.unique2{
+    color:var(--color1);
+}
+.unique3{
+    color:var(--color2);
+    font-style: italic;
+}
+.unique4{
+    color: var(--color1);
+}
+
+/* ending hero section */
+
+/* awesome features */
+.card{
+    border:none !important;
+}
+
+/* ending awesome features */
+
+/* register now */
+.register-now{
+    background-color: var(--color1);
+}
+.registration{
+    background-color: var(--color1);
+}
+.register{
+    color: var(--white);
+}
+.h1{
+    color: var(--color1);
+}
+.p{
+    color: var(--color2);
+}
+.form-registration{
+    background-color: rgb(255, 255, 255);
+}
+.input{
+
+    border:none;
+    border-bottom:1px solid #c4c4c4 ;
+}
+.submit{
+    width:20rem;
+    border-radius: none !important;
+    font-weight: 700;
+    background-color: var(--color1);
+    border: none !important;
+
+}
+.submit:hover{
+    background-color: var(--color3);
+}
+.submit:focus,.submit:active{
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+/*ending register now */
+
+/* footer */
+.footer-credit{
+    background-color: var(--black);
+}
+.footer-links{
+    color: rgb(72, 72, 72);
+    font-weight: bold;
+}
+.footer-links:hover{
+    text-decoration: none;
+    color:rgb(33, 33, 33);
+}
+.footer-heading{
+    color: var(--white);
+}
+.footer-icon{
+    font-size: 20px;
+    color: var(--white);
+
+}
+.icon{
+    height: 30px;
+    width: 30px;
+    background-color: rgb(38, 41, 38);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.links{
+  display: grid;
+  grid-template-columns: 50% 50%;
+    /* grid-template-columns: 50% 50%; */
+}
+.fa-paper-plane{
+    color: var(--color1);
+    padding: 10px;
+
+}
+
+.try-us-input{
+    outline:none;
+    background-color: rgb(14, 12, 12) ;
+    border: none;
+    padding: 10px;
+    color: var(--white);
+}
+.submit-link{
+    background-color: rgb(14, 12, 12) ;
+}
+.submit-link:focus,.submit-link{
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* ending footer */
+.unique{
+    height: 30rem;
+    padding: 8rem;
+    /* background-color: rgb(213, 212, 212); */
+    text-align: center;
+}
+.round{
+    height: 70px;
+    width: 70px;
+    border-radius:50%
+}
+.proile-flex{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top:2rem;
+    /* text-align: center; */
+}
+.unique5{
+    line-height: 0.4rem;
+}
+.spicodeX-logo{
+    color: gold;
+}
+.spicodeX{
+    color: var(--white);
+}

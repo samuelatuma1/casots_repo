@@ -1,0 +1,37 @@
+/* global */
+h1{
+    font-weight: bolder;
+}
+
+/* global ending */
+
+/*welcome-to-casots  */
+
+.welcome-to-casots{
+    margin-top: 6rem ;
+}
+
+/*ending welcome-to-casots  */
+
+/* whu=y chose us */
+.why_choose_us{
+    margin-top: 5rem;
+    color: #fff;
+    background-color: #8070d0;
+    padding: 5rem;
+
+}
+/*ending whu=y chose us */
+.the_best_tutors_in_town{
+    margin-top: 5rem;
+
+}
+/* best tutors in town */
+.icons{
+    font-size:xx-large ;
+    color: rgb(185, 184, 184);
+}
+.icons:hover{
+    color: #8070d0;
+}
+/* ending best tutors in town */

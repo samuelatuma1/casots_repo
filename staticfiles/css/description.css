@@ -1,0 +1,91 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    /* box-sizing: border 8-box; */
+}
+.top{
+    background-color: rgb(239, 235, 235);
+}
+.description{
+    margin-top: 5rem;
+}
+.fa-star{
+    color:#8070d0;
+    /* background-color: ; */
+}
+
+/* summary */
+.summary{
+    /* background-color: tomato; */
+    width: 600px;
+    padding: .5rem;
+}
+.vertical{
+    background-color: whitesmoke;
+    color: whitesmoke;
+    -webkit-transform: rotate(90deg);
+    width: 50px;
+    /* position: absolute; */
+    margin-top: 2rem;
+    /* height: px; */
+
+}
+.img{
+    height: 350px;
+}
+.category{
+    /* background-color: red; */
+    width: 500px;
+}
+.expand_caret {
+    transform: scale(1.6);
+    margin-left: 8px;
+    margin-top: -4px;
+}
+a[aria-expanded='false'] > .expand_caret {
+    transform: scale(1.6) rotate(-90deg);
+}
+.right-down:hover{
+    transform:rotateZ(-90deg);
+}
+.k{
+    background-color: royalblue;
+}
+.list{
+    padding: 1rem;
+    color: hotpink !important;
+}
+.group{
+    border: none;
+    border-bottom: 1px solid rgb(155, 155, 155);
+    color: black;
+}
+.dropdown-item{
+    width: 100% !important;
+}
+
+.take-a-quiz-btn{
+    background-color: #8070d0;
+    border: none !important;
+    ;
+}
+.take-a-quiz-btn:hover{
+    background-color:#7163b8; 
+}
+
+.color{
+    color: rgb(130, 129, 129);
+}
+.color:hover{
+    color: rgb(130, 129, 129);
+
+}
+
+/* signup */
+
+.sign-up{
+    background-color:#8070d0; 
+    color: #fff;
+}
